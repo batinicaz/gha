@@ -1,0 +1,65 @@
+on:
+  workflow_call:
+    inputs:
+      committerEmail:
+        description: The email address to use for author of the release commit message
+        default: <ghabot@users.noreply.github.com>
+        required: true
+        type: string
+      committerName:
+        description: The name to use for author of the release commit message
+        default: GitHub Actions Bot
+        required: true
+        type: string
+      includeLatestTag:
+        description: Optionally also push a latest tag
+        default: false
+        type: boolean
+    secrets:
+      APP_ID:
+        description: 'The ID of the GitHub App with permission to bypass branch protection'
+        required: true
+      APP_INSTALL_ID:
+        description: 'The ID of the GitHub App install with permission to bypass branch protection'
+        required: false
+      APP_PRIVATE_KEY:
+        description: 'The private key of the GitHub App with permission to bypass branch protection'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    if: ${{ github.actor }} != ${{ inputs.committerName }}
+    steps:
+      - uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92 # ratchet:tibdex/github-app-token@v1.8.0
+        id: generate-token
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          installation_id: ${{ secrets.APP_INSTALL_ID }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+
+      - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9 # ratchet:actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ steps.generate-token.outputs['token'] }}
+
+      - name: Configure committer
+        run: |
+          git config user.email ${{ inputs.committerEmail }}
+          git config user.name ${{ inputs.committerName }}
+
+      - name: Bump version
+        uses: qzb/standard-version-action@6f10b03f954471213d1ac206af8410f354801ecb # ratchet:qzb/standard-version-action@v1.0.13
+
+      - name: Push new tag and changelog
+        run: git push --follow-tags origin main
+
+      - name: Tag as latest
+        if: ${{ input.includeLatestTag }}
+        run: |
+          git tag -f latest
+          git push -f origin latest
