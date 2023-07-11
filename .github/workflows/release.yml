@@ -49,8 +49,8 @@ jobs:
 
       - name: Configure committer
         run: |
-          git config user.email ${{ inputs.committerEmail }}
-          git config user.name ${{ inputs.committerName }}
+          git config user.email "${{ inputs.committerEmail }}"
+          git config user.name "${{ inputs.committerName }}"
 
       - name: Bump version
         uses: qzb/standard-version-action@6f10b03f954471213d1ac206af8410f354801ecb # ratchet:qzb/standard-version-action@v1.0.13
