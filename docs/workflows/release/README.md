@@ -37,8 +37,10 @@ permissions:
 
 jobs:
   release:
-    uses: ./.github/workflows/release.yml
+    uses: batinicaz/gha/.github/workflows/release.yml@latest
     with:
+      committerEmail: <user@example.com>
+      committerName: my-release-bot
       includeLatestTag: true
     secrets:
       APP_ID: ${{ secrets.APP_ID }}
