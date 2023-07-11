@@ -33,11 +33,12 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    if: ${{ github.actor }} != ${{ inputs.committerName }}
+    if: ${{ github.event.pusher.name }} != ${{ inputs.committerName }}
     steps:
       - name: debug
         run: |
-          echo "${{ toJson(github) }}" |
+          echo "actor: ${{ github.actor }}"
+          echo "pusher: ${{ github.event.pusher.name }}"
 
       - uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92 # ratchet:tibdex/github-app-token@v1.8.0
         id: generate-token
