@@ -4,6 +4,15 @@ Workflow designed to be run on the main branch and automatically create a releas
 
 Generates a new major/minor/patch tag and updates the `CHANGELOG.md` based on the conventional commit standard.
 
+<!-- TOC -->
+* [Release](#release)
+  * [Requirements](#requirements)
+  * [Usage](#usage)
+    * [Configuration Reference](#configuration-reference)
+  * [GitHub App Configuration](#github-app-configuration)
+  * [Ruleset Configuration](#ruleset-configuration)
+<!-- TOC -->
+
 ## Requirements
 
 - Using [conventional commit](https://www.conventionalcommits.org/en/) messages
