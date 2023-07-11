@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   release:
-    uses: ./.github/release.yml
+    uses: ./.github/workflows/release.yml
     with:
       includeLatestTag: true
     secrets: inherit
