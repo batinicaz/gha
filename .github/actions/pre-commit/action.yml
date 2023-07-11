@@ -1,0 +1,24 @@
+name: pre-commit
+description: Wrapper for running pre-commit image that runs as a non root user
+author: batinicaz
+
+inputs:
+  image:
+    description: The pre-commit image to use
+    default: batinicaz/pre-commit:latest
+    required: false
+  path:
+    description: The path to the configuration to run pre-commit against
+    default: ${{ github.workspace }}
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: Run pre-commit
+      run: |
+        # Temp change permissions to enable pre-commit image to run as non root
+        sudo chown -R 65532 "${{ inputs.path}}"
+        docker run --rm -w /test -v "${{ inputs.path}}":/test ${{ inputs.image }}
+        sudo chown -R $(id -u):$(id -g) "${{ inputs.path}}"
+      shell: bash

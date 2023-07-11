@@ -23,7 +23,7 @@ Generates a new major/minor/patch tag and updates the `CHANGELOG.md` based on th
 
 ## Usage
 
-You can all the workflow from the workflow in your repo like so:
+You can call the workflow from the workflow in your repo like so:
 
 ```yaml
 name: Create Release
