@@ -8,4 +8,4 @@ Repository containing re-usable workflows & actions for use within GitHub action
 
 ## Workflows
 
-- [Release](./.github/workflows/release): Automated creation of tagged versions when merging to main branch.
+- [Release](docs/workflows/release): Automated creation of tagged versions when merging to main branch.
