@@ -13,4 +13,7 @@ jobs:
     uses: ./.github/workflows/release.yml
     with:
       includeLatestTag: true
-    secrets: inherit
+    secrets:
+      APP_ID: ${{ secrets.APP_ID }}
+      APP_INSTALL_ID: ${{ secrets.APP_INSTALL_ID }}
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}

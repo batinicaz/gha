@@ -4,12 +4,12 @@ on:
       committerEmail:
         description: The email address to use for author of the release commit message
         default: <ghabot@users.noreply.github.com>
-        required: true
+        required: false
         type: string
       committerName:
         description: The name to use for author of the release commit message
         default: GitHub Actions Bot
-        required: true
+        required: false
         type: string
       includeLatestTag:
         description: Optionally also push a latest tag
