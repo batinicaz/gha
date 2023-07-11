@@ -59,7 +59,7 @@ jobs:
         run: git push --follow-tags origin main
 
       - name: Tag as latest
-        if: ${{ input.includeLatestTag }}
+        if: ${{ inputs.includeLatestTag }}
         run: |
           git tag -f latest
-          git push -f origin latest
+          git push -f origing latest
