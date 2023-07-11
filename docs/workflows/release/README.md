@@ -23,7 +23,7 @@ Generates a new major/minor/patch tag and updates the `CHANGELOG.md` based on th
 
 ## Usage
 
-Call the workflow from the workflow in your repo like so:
+You can all the workflow from the workflow in your repo like so:
 
 ```yaml
 name: Create Release
@@ -36,34 +36,14 @@ permissions:
   contents: write
 
 jobs:
-  # Call with auto propagation of secrets
   release:
     uses: ./.github/workflows/release.yml
     with:
       includeLatestTag: true
-    secrets: inherit
-```
-
-Or if you want to name secrets differently, pass them in explicitly:
-
-```yaml
-name: Create Release
-on:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: write
-
-jobs:
- # Call with explicit passing of secrets
-  release:
-    uses: batinicaz/gha/.github/workflows/release.yml@latest
-    with:
-      parameterName: "Desired value"
     secrets:
-      secretName: ${{ secrets.differentlyNamedSecret }}
+      APP_ID: ${{ secrets.APP_ID }}
+      APP_INSTALL_ID: ${{ secrets.APP_INSTALL_ID }}
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
 ```
 
 ### Configuration Reference
