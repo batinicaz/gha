@@ -1,0 +1,16 @@
+# Auto release this repo on merge to main
+name: Create Release
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    uses: ./.github/workflows/release/release.yml
+    with:
+      includeLatestTag: true
+    secrets: inherit
