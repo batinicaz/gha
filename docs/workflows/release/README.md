@@ -1,5 +1,7 @@
 # Release
 
+Workflow File: [release.yml](../../../.github/workflows/release.yml)
+
 Workflow designed to be run on the main branch and automatically create a release on each merge.
 
 Generates a new major/minor/patch tag and updates the `CHANGELOG.md` based on the conventional commit standard.
@@ -36,7 +38,7 @@ permissions:
 jobs:
   # Call with auto propagation of secrets
   release:
-    uses: ./.github/workflows/release/release.yml
+    uses: ./.github/workflows/release.yml
     with:
       includeLatestTag: true
     secrets: inherit
@@ -57,7 +59,7 @@ permissions:
 jobs:
  # Call with explicit passing of secrets
   release:
-    uses: batinicaz/gha/.github/workflows/release/release.yml@latest
+    uses: batinicaz/gha/.github/workflows/release.yml@latest
     with:
       parameterName: "Desired value"
     secrets:
