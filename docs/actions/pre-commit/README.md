@@ -21,7 +21,7 @@ You can call the action from the workflow in your repo like so:
 
 ### Configuration Reference
 
-| Configuration Type | Name  | Description                                             | Default Value               | Required |
-|--------------------|:------|---------------------------------------------------------|-----------------------------|:---------|
-| input              | image | The docker image to run                                 | batinicaz/pre-commit:latest | No       |
-| input              | path  | The path to the configuration to run pre-commit against | ${{ github.workspace }}     | No       |
+| Configuration Type | Name  | Description                                             | Default Value                       | Required |
+|--------------------|:------|---------------------------------------------------------|-------------------------------------|:---------|
+| input              | image | The docker image to run                                 | ghcr.io/batinicaz/pre-commit:latest | No       |
+| input              | path  | The path to the configuration to run pre-commit against | ${{ github.workspace }}             | No       |

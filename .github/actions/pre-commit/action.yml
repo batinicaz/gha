@@ -5,7 +5,7 @@ author: batinicaz
 inputs:
   image:
     description: The pre-commit image to use
-    default: batinicaz/pre-commit:latest
+    default: ghcr.io/batinicaz/pre-commit:latest
     required: false
   path:
     description: The path to the configuration to run pre-commit against
