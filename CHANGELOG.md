@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/batinicaz/gha/compare/v1.1.1...v1.2.0) (2023-07-12)
+
+
+### Features
+
+* add pre-commit action ([348db4f](https://github.com/batinicaz/gha/commit/348db4f1a4f1a9ba819aa3ca1174ee41b67e91df))
+
 ### [1.1.1](https://github.com/batinicaz/gha/compare/v1.1.0...v1.1.1) (2023-07-11)
 
 ## 1.1.0 (2023-07-11)
