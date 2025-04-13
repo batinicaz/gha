@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.5](https://github.com/batinicaz/gha/compare/v1.2.4...v1.2.5) (2025-04-13)
+
+
+### Bug Fixes
+
+* token clash in docker workflow and update docs ([bdf8665](https://github.com/batinicaz/gha/commit/bdf866582e114ab8ff181d5befdd829a7f6c948c))
+
 ### [1.2.4](https://github.com/batinicaz/gha/compare/v1.2.3...v1.2.4) (2025-04-13)
 
 ### [1.2.3](https://github.com/batinicaz/gha/compare/v1.2.2...v1.2.3) (2024-11-20)
