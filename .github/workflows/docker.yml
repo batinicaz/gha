@@ -1,8 +1,8 @@
 on:
   workflow_call:
     secrets:
-      GITHUB_TOKEN:
-        description: 'The Github token to authenticate against GHCR'
+      GHCR_TOKEN:
+        description: "The token to authenticate against GHCR"
         required: true
 
 permissions:
@@ -35,7 +35,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6

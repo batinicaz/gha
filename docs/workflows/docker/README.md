@@ -8,8 +8,6 @@ Workflow designed to build and publish a daily docker image with optimised cache
   * [Requirements](#requirements)
   * [Usage](#usage)
     * [Configuration Reference](#configuration-reference)
-  * [GitHub App Configuration](#github-app-configuration)
-  * [Ruleset Configuration](#ruleset-configuration)
 <!-- TOC -->
 
 ## Requirements
@@ -34,12 +32,12 @@ permissions:
 
 jobs:
   release:
-    uses: batinicaz/gha/.github/workflows/docker@latest
+    uses: batinicaz/gha/.github/workflows/docker.yml@latest
     secrets:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ### Configuration Reference
 | Configuration Type | Name             | Description                                                                                                                       | Default Value                   | Required |
 |--------------------|------------------|-----------------------------------------------------------------------------------------------------------------------------------|---------------------------------|----------|
-| secret              | GITHUB_TOKEN   | The GITHUB_TOKEN with permission to access the GHCR for the repo                                                                 |  | Yes       |
+| secret              | GHCR_TOKEN   | The token with permission to access the GHCR for the repo                                                                 |  | Yes       |
