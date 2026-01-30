@@ -17,13 +17,10 @@ on:
         type: boolean
     secrets:
       APP_ID:
-        description: 'The ID of the GitHub App with permission to bypass branch protection'
+        description: "The ID of the GitHub App with permission to bypass branch protection"
         required: true
-      APP_INSTALL_ID:
-        description: 'The ID of the GitHub App install with permission to bypass branch protection'
-        required: false
       APP_PRIVATE_KEY:
-        description: 'The private key of the GitHub App with permission to bypass branch protection'
+        description: "The private key of the GitHub App with permission to bypass branch protection"
         required: true
 
 permissions:
@@ -35,14 +32,13 @@ jobs:
     runs-on: ubuntu-latest
     if: "!endsWith(github.actor, '[bot]')"
     steps:
-      - uses: tibdex/github-app-token@32691ba7c9e7063bd457bd8f2a5703138591fa58 # v1.9.0
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # ratchet:actions/create-github-app-token@v2
         id: generate-token
         with:
-          app_id: ${{ secrets.APP_ID }}
-          installation_id: ${{ secrets.APP_INSTALL_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
-      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # ratchet:actions/checkout@v6
         with:
           fetch-depth: 0
           token: ${{ steps.generate-token.outputs['token'] }}
@@ -53,13 +49,13 @@ jobs:
           git config user.name "${{ inputs.committerName }}"
 
       - name: Bump version
-        uses: qzb/standard-version-action@6f10b03f954471213d1ac206af8410f354801ecb # ratchet:qzb/standard-version-action@v1.0.13
+        uses: qzb/standard-version-action@a7d1f3c8e81f96976e1af5f6df576a55b4398d2b # ratchet:qzb/standard-version-action@v1.0.5
 
       - name: Push new tag and changelog
         run: git push --follow-tags origin main
 
       - name: Tag as latest
         if: ${{ inputs.includeLatestTag }}
-        run: |
+        run: |-
           git tag -f latest
           git push -f origin latest
