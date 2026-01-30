@@ -19,9 +19,6 @@ on:
       APP_ID:
         description: "The ID of the GitHub App with permission to bypass branch protection"
         required: true
-      APP_INSTALL_ID:
-        description: "The ID of the GitHub App install with permission to bypass branch protection"
-        required: false
       APP_PRIVATE_KEY:
         description: "The private key of the GitHub App with permission to bypass branch protection"
         required: true
@@ -35,12 +32,11 @@ jobs:
     runs-on: ubuntu-latest
     if: "!endsWith(github.actor, '[bot]')"
     steps:
-      - uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # ratchet:tibdex/github-app-token@v2.1.0
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # ratchet:actions/create-github-app-token@v2
         id: generate-token
         with:
-          app_id: ${{ secrets.APP_ID }}
-          installation_id: ${{ secrets.APP_INSTALL_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
 
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # ratchet:actions/checkout@v6
         with:

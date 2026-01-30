@@ -44,7 +44,6 @@ jobs:
       includeLatestTag: true
     secrets:
       APP_ID: ${{ secrets.APP_ID }}
-      APP_INSTALL_ID: ${{ secrets.APP_INSTALL_ID }}
       APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
 ```
 
@@ -56,7 +55,6 @@ jobs:
 | input              | committerName    | The name to use for author of the release commit message                                                                          | GitHub Actions Bot              | No       |
 | input              | includeLatestTag | Optionally also tag the release as "latest"                                                                                       | false                           | No       |
 | secret             | APP_ID           | The ID of the GitHub App with permission to bypass branch protection. See below for details on configuring GitHub app.            |                                 | Yes      |
-| secret             | APP_INSTALL_ID   | The ID of the GitHub App install with permission to bypass branch protection. Only required if not installed to the current repo. |                                 | No       |
 | secret             | APP_PRIVATE_KEY  | The private key of the GitHub App with permission to bypass branch protection                                                     |                                 | Yes      |
 
 ## GitHub App Configuration
@@ -68,11 +66,10 @@ jobs:
     4. Under permissions, expand repository permission and find the `Contents` permission. Change the dropdown on the right to `Read and write`
     5. Leave all other options blank/default and click `Create GitHub app`
 2. On the app settings page scroll down to `Private keys` and click `Generate a private key`. Store this somewhere safe as you will need to add it to your repository secrets later.
-3. On the app settings page look to the left hand side and click `Install App`. Install the app to a specific repository or all repositories depending on your need. If are installing the app to all repos note the installation ID you will see in the URL when editing the install.
+3. On the app settings page look to the left hand side and click `Install App`. Install the app to the repository you want to use this workflow in.
 4. In your repository create the following secrets:
-    1. `appID` - Found on the app settings page right at the top.
-    2. `appInstallID` - Optional, found in step 4 above.
-    3. `privateKey` - The key you downloaded in step 2 above.
+    1. `APP_ID` - Found on the app settings page right at the top.
+    2. `APP_PRIVATE_KEY` - The key you downloaded in step 2 above.
 
 ## Ruleset Configuration
 
