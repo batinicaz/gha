@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.10](https://github.com/batinicaz/gha/compare/v1.2.9...v1.2.10) (2026-01-30)
+
+
+### Bug Fixes
+
+* move token generation action to actively maintained action ([f4a1d93](https://github.com/batinicaz/gha/commit/f4a1d9312d554c381d2b3f714ec15fdb3c570b53))
+
 ### [1.2.9](https://github.com/batinicaz/gha/compare/v1.2.8...v1.2.9) (2026-01-30)
 
 ### [1.2.8](https://github.com/batinicaz/gha/compare/v1.2.7...v1.2.8) (2026-01-30)
