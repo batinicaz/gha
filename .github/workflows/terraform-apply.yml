@@ -1,0 +1,79 @@
+name: Terraform Apply
+on:
+  workflow_call:
+    inputs:
+      terraform_version:
+        description: Terraform version to use
+        default: "1.14.4"
+        required: false
+        type: string
+      working_directory:
+        description: Directory containing Terraform configuration
+        default: terraform
+        required: false
+        type: string
+      infisical_common_env:
+        description: Infisical environment slug for common secrets
+        default: terraform-common
+        required: false
+        type: string
+      infisical_project_env:
+        description: Infisical environment slug for project secrets (defaults to terraform-{repo-name})
+        default: ""
+        required: false
+        type: string
+      infisical_project_slug:
+        description: Infisical project slug
+        default: terraform
+        required: false
+        type: string
+    secrets:
+      INFISICAL_IDENTITY_ID:
+        description: Infisical machine identity ID for OIDC auth
+        required: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  apply:
+    name: Apply
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # ratchet:actions/checkout@v6
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd # ratchet:hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ inputs.terraform_version }}
+
+      - name: Fetch common secrets from Infisical
+        uses: Infisical/secrets-action@8802effbe453d0576cd923567dcc2c97a1f54058 # ratchet:Infisical/secrets-action@v1.0.15
+        with:
+          domain: https://eu.infisical.com
+          method: oidc
+          oidc-audience: ${{ github.server_url }}/${{ github.repository_owner }}
+          env-slug: ${{ inputs.infisical_common_env }}
+          project-slug: ${{ inputs.infisical_project_slug }}
+          identity-id: ${{ secrets.INFISICAL_IDENTITY_ID }}
+          export-type: env
+
+      - name: Fetch project secrets from Infisical
+        uses: Infisical/secrets-action@8802effbe453d0576cd923567dcc2c97a1f54058 # ratchet:Infisical/secrets-action@v1.0.15
+        with:
+          domain: https://eu.infisical.com
+          method: oidc
+          oidc-audience: ${{ github.server_url }}/${{ github.repository_owner }}
+          env-slug: ${{ inputs.infisical_project_env || format('terraform-{0}', github.event.repository.name) }}
+          project-slug: ${{ inputs.infisical_project_slug }}
+          identity-id: ${{ secrets.INFISICAL_IDENTITY_ID }}
+          export-type: env
+
+      - name: Terraform Init
+        working-directory: ${{ inputs.working_directory }}
+        run: terraform init
+
+      - name: Terraform Apply
+        working-directory: ${{ inputs.working_directory }}
+        run: terraform apply -auto-approve
