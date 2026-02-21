@@ -58,8 +58,8 @@ jobs:
           load: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          build-args: |
-            GITHUB_TOKEN=${{ secrets.GHCR_TOKEN }}
+          secrets: |
+            github_token=${{ secrets.GHCR_TOKEN }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
