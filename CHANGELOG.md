@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/batinicaz/gha/compare/v1.5.0...v1.5.1) (2026-02-21)
+
+
+### Bug Fixes
+
+* allow pushing tags for docker builds ([ac49bfb](https://github.com/batinicaz/gha/commit/ac49bfba2d41019d9ffa38940f3c442dd224b987))
+
 ## [1.5.0](https://github.com/batinicaz/gha/compare/v1.4.1...v1.5.0) (2026-02-21)
 
 
