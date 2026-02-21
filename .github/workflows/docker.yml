@@ -43,7 +43,7 @@ jobs:
             type=schedule,pattern=daily-{{date 'YYYYMMDD'}}
 
       - name: Login to GitHub Container Registry
-        if: inputs.push && github.ref == 'refs/heads/main'
+        if: inputs.push && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
         uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # ratchet:docker/login-action@v3
         with:
           registry: ghcr.io
@@ -80,7 +80,7 @@ jobs:
           sarif_file: 'trivy-results.sarif'
 
       - name: Push Docker image
-        if: inputs.push && github.ref == 'refs/heads/main'
+        if: inputs.push && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
         shell: bash
         run: |
           for tag in $(echo "${{ steps.meta.outputs.tags }}" | tr '\n' ' '); do
