@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/batinicaz/gha/compare/v1.4.1...v1.5.0) (2026-02-21)
+
+
+### Features
+
+* add caching support to pre-commit ([9b4aa90](https://github.com/batinicaz/gha/commit/9b4aa901267386f9551b6f759039eba3e0c314f5))
+
 ### [1.4.1](https://github.com/batinicaz/gha/compare/v1.4.0...v1.4.1) (2026-02-21)
 
 
