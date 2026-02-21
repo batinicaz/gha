@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/batinicaz/gha/compare/v1.4.0...v1.4.1) (2026-02-21)
+
+
+### Bug Fixes
+
+* pass token as secret instead of build arg ([71d1f0e](https://github.com/batinicaz/gha/commit/71d1f0e02a3ee3cbbd17026309330bfa433b7178))
+
 ## [1.4.0](https://github.com/batinicaz/gha/compare/v1.3.1...v1.4.0) (2026-02-21)
 
 
