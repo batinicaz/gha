@@ -5,6 +5,9 @@ Action File: [action.yml](../../../.github/actions/pre-commit/action.yml)
 Simple wrapper action to make use of [batinicaz/pre-commit](https://github.com/batinicaz/pre-commit/) image built on
 top of chainguards images that do not run as root.
 
+Hook environments are automatically cached between runs using `actions/cache`, keyed on `.pre-commit-config.yaml`.
+This avoids re-downloading and re-installing hooks on every run.
+
 ## Usage
 
 You can call the action from the workflow in your repo like so:

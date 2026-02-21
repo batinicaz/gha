@@ -15,10 +15,22 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: Cache pre-commit environments
+      uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # ratchet:actions/cache@v5
+      with:
+        path: ${{ runner.temp }}/pre-commit-cache
+        key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
+        restore-keys: |
+          pre-commit-
+
     - name: Run pre-commit
       run: |
-        # Temp change permissions to enable pre-commit image to run as non root
-        sudo chown -R 65532 "${{ inputs.path}}"
-        docker run --rm -w /test -v "${{ inputs.path}}":/test ${{ inputs.image }}
-        sudo chown -R $(id -u):$(id -g) "${{ inputs.path}}"
+        mkdir -p "${{ runner.temp }}/pre-commit-cache"
+        sudo chown -R 65532 "${{ inputs.path }}" "${{ runner.temp }}/pre-commit-cache"
+        docker run --rm -w /test \
+          -v "${{ inputs.path }}":/test \
+          -v "${{ runner.temp }}/pre-commit-cache":/pre-commit-cache \
+          -e PRE_COMMIT_HOME=/pre-commit-cache \
+          ${{ inputs.image }}
+        sudo chown -R $(id -u):$(id -g) "${{ inputs.path }}" "${{ runner.temp }}/pre-commit-cache"
       shell: bash
