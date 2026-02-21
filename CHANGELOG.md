@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/batinicaz/gha/compare/v1.2.14...v1.3.0) (2026-02-21)
+
+
+### Features
+
+* add configurable push to docker workflow + trivvy scanning ([4eb6c4e](https://github.com/batinicaz/gha/commit/4eb6c4e4c13941c29339bb33a108a4c40f31a766))
+
 ### [1.2.14](https://github.com/batinicaz/gha/compare/v1.2.13...v1.2.14) (2026-02-12)
 
 ### [1.2.13](https://github.com/batinicaz/gha/compare/v1.2.12...v1.2.13) (2026-02-11)
