@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/batinicaz/gha/compare/v1.5.7...v1.6.0) (2026-02-24)
+
+
+### Features
+
+* unpin codeql due to frequent changes ([1e53971](https://github.com/batinicaz/gha/commit/1e5397110b49d3274386d001ca2629bac356ef79))
+
 ### [1.5.7](https://github.com/batinicaz/gha/compare/v1.5.6...v1.5.7) (2026-02-24)
 
 ### [1.5.6](https://github.com/batinicaz/gha/compare/v1.5.5...v1.5.6) (2026-02-24)
