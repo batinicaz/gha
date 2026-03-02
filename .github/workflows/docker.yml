@@ -65,7 +65,7 @@ jobs:
           cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache,mode=max
 
       - name: Scan image with Trivy
-        uses: aquasecurity/trivy-action@1bd062560b422f5944df1de50abd05162bea079e # ratchet:aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@97e0b3872f55f89b95b2f65b3dbab56962816478 # ratchet:aquasecurity/trivy-action@master
         with:
           image-ref: ghcr.io/${{ github.repository }}:latest
           format: 'sarif'
