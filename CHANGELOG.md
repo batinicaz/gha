@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.7.0](https://github.com/batinicaz/gha/compare/v1.6.3...v1.7.0) (2026-03-04)
+
+
+### Features
+
+* add support for running smoke tests on built image ([4e660c0](https://github.com/batinicaz/gha/commit/4e660c0e7209a0f930e10fb5ef5d395acfc54473))
+
 ### [1.6.3](https://github.com/batinicaz/gha/compare/v1.6.2...v1.6.3) (2026-03-02)
 
 ### [1.6.2](https://github.com/batinicaz/gha/compare/v1.6.1...v1.6.2) (2026-02-25)
