@@ -11,6 +11,16 @@ on:
         type: boolean
         default: true
         required: false
+      smoke_test:
+        description: "Shell commands to run as a smoke test against the built image. The image ref is available as $IMAGE. Leave empty to skip."
+        type: string
+        default: ""
+        required: false
+      smoke_test_timeout:
+        description: "Timeout in minutes for the smoke test step"
+        type: number
+        default: 5
+        required: false
     secrets:
       GHCR_TOKEN:
         description: "The token to authenticate against GHCR"
@@ -79,6 +89,27 @@ jobs:
         continue-on-error: true
         with:
           sarif_file: 'trivy-results.sarif'
+
+      - name: Smoke test
+        if: inputs.smoke_test != ''
+        timeout-minutes: ${{ fromJSON(inputs.smoke_test_timeout) }}
+        shell: bash
+        env:
+          IMAGE: ghcr.io/${{ github.repository }}:latest
+        run: ${{ inputs.smoke_test }}
+
+      - name: Smoke test container logs
+        if: failure() && inputs.smoke_test != ''
+        shell: bash
+        env:
+          IMAGE: ghcr.io/${{ github.repository }}:latest
+        run: |
+          for cid in $(docker ps -aq --filter "ancestor=$IMAGE"); do
+            echo "::group::Logs from container $cid"
+            docker logs "$cid" 2>&1 || true
+            echo "::endgroup::"
+            docker rm -f "$cid" > /dev/null 2>&1 || true
+          done
 
       - name: Push Docker image
         if: inputs.push && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
