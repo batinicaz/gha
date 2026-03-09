@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/batinicaz/gha/compare/v1.7.4...v1.8.0) (2026-03-09)
+
+
+### Features
+
+* add no_cache_filter input for stage-level cache bypass ([7b17eed](https://github.com/batinicaz/gha/commit/7b17eed3ff3019dfb59fae44ad5561ef1a529cd1))
+
 ### [1.7.4](https://github.com/batinicaz/gha/compare/v1.7.3...v1.7.4) (2026-03-09)
 
 
