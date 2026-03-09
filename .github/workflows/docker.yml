@@ -21,6 +21,11 @@ on:
         type: number
         default: 5
         required: false
+      no_cache_filter:
+        description: "Comma-separated list of Dockerfile stage names to always rebuild (skip cache). Useful for stages with apk upgrade or similar package manager commands."
+        type: string
+        default: ""
+        required: false
     secrets:
       GHCR_TOKEN:
         description: "The token to authenticate against GHCR"
@@ -71,6 +76,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           secrets: |
             github_token=${{ secrets.GHCR_TOKEN }}
+          no-cache-filter: ${{ inputs.no_cache_filter }}
           cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache
           cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache,mode=max
 
