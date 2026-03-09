@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.4](https://github.com/batinicaz/gha/compare/v1.7.3...v1.7.4) (2026-03-09)
+
+
+### Bug Fixes
+
+* split trivy scan from SARIF report to prevent false positives ([c9f6887](https://github.com/batinicaz/gha/commit/c9f6887dbbcdc17b1c8f533442467c69cfb33cfe))
+
 ### [1.7.3](https://github.com/batinicaz/gha/compare/v1.7.2...v1.7.3) (2026-03-05)
 
 ### [1.7.2](https://github.com/batinicaz/gha/compare/v1.7.1...v1.7.2) (2026-03-04)
