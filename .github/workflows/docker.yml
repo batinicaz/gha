@@ -76,7 +76,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           secrets: |
             github_token=${{ secrets.GHCR_TOKEN }}
-          no-cache-filter: ${{ inputs.no_cache_filter }}
+          no-cache-filters: ${{ inputs.no_cache_filter }}
           cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache
           cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache,mode=max
 
