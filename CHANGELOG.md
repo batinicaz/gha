@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.8.1](https://github.com/batinicaz/gha/compare/v1.8.0...v1.8.1) (2026-03-10)
+
+
+### Bug Fixes
+
+* typo no-cache-filter → no-cache-filters ([bf72b7a](https://github.com/batinicaz/gha/commit/bf72b7a37ebfcdd08d63fda21bd9debd673602c7))
+
 ## [1.8.0](https://github.com/batinicaz/gha/compare/v1.7.4...v1.8.0) (2026-03-09)
 
 
