@@ -20,9 +20,10 @@ runs:
         GH_TOKEN: ${{ github.token }}
         VERSIONS_JSON: ${{ inputs.versions }}
       run: |
+        readarray -t entries < <(echo "$VERSIONS_JSON" | jq -c '.[]')
         {
           echo "build_args<<EOF"
-          echo "$VERSIONS_JSON" | jq -c '.[]' | while read -r entry; do
+          for entry in "${entries[@]}"; do
             arg=$(echo "$entry" | jq -r '.arg')
             repo=$(echo "$entry" | jq -r '.repo')
             strip_v=$(echo "$entry" | jq -r '.strip_v // true')
