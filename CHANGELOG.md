@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.9.2](https://github.com/batinicaz/gha/compare/v1.9.1...v1.9.2) (2026-03-24)
+
+
+### Bug Fixes
+
+* use readarray instead of pipe-into-while in resolve-versions ([4a55159](https://github.com/batinicaz/gha/commit/4a551596d7c1f7c995bcba46ae78287efd88988f))
+
 ### [1.9.1](https://github.com/batinicaz/gha/compare/v1.9.0...v1.9.1) (2026-03-24)
 
 ## [1.9.0](https://github.com/batinicaz/gha/compare/v1.8.4...v1.9.0) (2026-03-24)
