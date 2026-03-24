@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/batinicaz/gha/compare/v1.8.4...v1.9.0) (2026-03-24)
+
+
+### Features
+
+* add resolve-versions composite action ([ca972e4](https://github.com/batinicaz/gha/commit/ca972e428c65cf8f7c4ba59b4a94dbcc9c9d8deb))
+* replace trivy with grype for image scanning ([5b89fd4](https://github.com/batinicaz/gha/commit/5b89fd49ab0de1b4e401521a6e62ba8fb2144e82))
+
 ### [1.8.4](https://github.com/batinicaz/gha/compare/v1.8.3...v1.8.4) (2026-03-18)
 
 ### [1.8.3](https://github.com/batinicaz/gha/compare/v1.8.2...v1.8.3) (2026-03-14)
