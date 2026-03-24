@@ -1,0 +1,40 @@
+name: Resolve latest release versions
+description: Look up latest GitHub release tags and output as Docker build args
+inputs:
+  versions:
+    description: >
+      JSON array of objects with keys: "arg" (build arg name), "repo" (owner/repo),
+      "strip_v" (optional, defaults to true). Example:
+      [{"arg": "MY_VERSION", "repo": "owner/repo"}, {"arg": "OTHER", "repo": "owner/other", "strip_v": false}]
+    required: true
+outputs:
+  build_args:
+    description: "Newline-separated KEY=VALUE pairs for docker build --build-arg"
+    value: ${{ steps.resolve.outputs.build_args }}
+runs:
+  using: composite
+  steps:
+    - id: resolve
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+        VERSIONS_JSON: ${{ inputs.versions }}
+      run: |
+        {
+          echo "build_args<<EOF"
+          echo "$VERSIONS_JSON" | jq -c '.[]' | while read -r entry; do
+            arg=$(echo "$entry" | jq -r '.arg')
+            repo=$(echo "$entry" | jq -r '.repo')
+            strip_v=$(echo "$entry" | jq -r '.strip_v // true')
+            tag=$(gh api "repos/${repo}/releases/latest" --jq '.tag_name')
+            if [[ -z "$tag" ]]; then
+              echo "::error::Failed to resolve latest release for ${repo}"
+              exit 1
+            fi
+            if [[ "$strip_v" == "true" ]]; then
+              tag="${tag#v}"
+            fi
+            echo "${arg}=${tag}"
+          done
+          echo "EOF"
+        } >> "$GITHUB_OUTPUT"
