@@ -26,6 +26,11 @@ on:
         type: string
         default: ""
         required: false
+      build_args:
+        description: "Newline-separated list of build args (KEY=VALUE) passed to docker build"
+        type: string
+        default: ""
+        required: false
     secrets:
       GHCR_TOKEN:
         description: "The token to authenticate against GHCR"
@@ -74,36 +79,38 @@ jobs:
           load: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: ${{ inputs.build_args }}
           secrets: |
             github_token=${{ secrets.GHCR_TOKEN }}
           no-cache-filters: ${{ inputs.no_cache_filter }}
           cache-from: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache
           cache-to: type=registry,ref=ghcr.io/${{ github.repository }}:buildcache,mode=max
 
-      - name: Scan image with Trivy
-        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # ratchet:aquasecurity/trivy-action@master
+      - name: Scan image with Grype
+        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # ratchet:anchore/scan-action@v7.4.0
         with:
-          image-ref: ghcr.io/${{ github.repository }}:latest
-          format: 'table'
-          exit-code: 1
-          severity: LOW,MEDIUM,HIGH,CRITICAL
+          image: ghcr.io/${{ github.repository }}:latest
+          output-format: table
+          fail-build: true
+          severity-cutoff: low
+          only-fixed: true
 
-      - name: Generate Trivy SARIF report
-        uses: aquasecurity/trivy-action@57a97c7e7821a5776cebc9bb87c984fa69cba8f1 # ratchet:aquasecurity/trivy-action@master
+      - name: Generate Grype SARIF report
+        uses: anchore/scan-action@e1165082ffb1fe366ebaf02d8526e7c4989ea9d2 # ratchet:anchore/scan-action@v7.4.0
         if: always()
+        id: grype-sarif
         with:
-          image-ref: ghcr.io/${{ github.repository }}:latest
-          format: 'sarif'
-          exit-code: 0
-          severity: LOW,MEDIUM,HIGH,CRITICAL
-          output: 'trivy-results.sarif'
+          image: ghcr.io/${{ github.repository }}:latest
+          output-format: sarif
+          fail-build: false
+          severity-cutoff: low
 
-      - name: Upload Trivy results
-        uses: github/codeql-action/upload-sarif@v4
+      - name: Upload Grype results
+        uses: github/codeql-action/upload-sarif@38697555549f1db7851b81482ff19f1fa5c4fedc # ratchet:github/codeql-action/upload-sarif@v4.34.1
         if: always()
         continue-on-error: true
         with:
-          sarif_file: 'trivy-results.sarif'
+          sarif_file: ${{ steps.grype-sarif.outputs.sarif }}
 
       - name: Smoke test
         if: inputs.smoke_test != ''
