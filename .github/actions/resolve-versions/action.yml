@@ -26,7 +26,7 @@ runs:
           for entry in "${entries[@]}"; do
             arg=$(echo "$entry" | jq -r '.arg')
             repo=$(echo "$entry" | jq -r '.repo')
-            strip_v=$(echo "$entry" | jq -r '.strip_v // true')
+            strip_v=$(echo "$entry" | jq -r 'if has("strip_v") then .strip_v else true end')
             tag=$(gh api "repos/${repo}/releases/latest" --jq '.tag_name')
             if [[ -z "$tag" ]]; then
               echo "::error::Failed to resolve latest release for ${repo}"
