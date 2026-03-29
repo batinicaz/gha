@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.11.2](https://github.com/batinicaz/gha/compare/v1.11.1...v1.11.2) (2026-03-29)
+
+
+### Bug Fixes
+
+* add concurrency lock to terraform plan and apply jobs ([7e32b85](https://github.com/batinicaz/gha/commit/7e32b850e262f8563c909842f0b1907ba9823384))
+
 ### [1.11.1](https://github.com/batinicaz/gha/compare/v1.11.0...v1.11.1) (2026-03-29)
 
 ## [1.11.0](https://github.com/batinicaz/gha/compare/v1.10.4...v1.11.0) (2026-03-29)
