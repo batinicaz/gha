@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.2](https://github.com/batinicaz/gha/compare/v1.13.1...v1.13.2) (2026-03-29)
+
+
+### Bug Fixes
+
+* exclude own images from renovate minimumReleaseAge gate ([d229e0f](https://github.com/batinicaz/gha/commit/d229e0fe1a0c97f16a3c79394b5f4ad62f27c0fd))
+
 ### [1.13.1](https://github.com/batinicaz/gha/compare/v1.13.0...v1.13.1) (2026-03-29)
 
 
