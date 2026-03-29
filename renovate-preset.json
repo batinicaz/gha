@@ -4,6 +4,12 @@
   "pre-commit": { "enabled": true },
   "packageRules": [
     {
+      "description": "Skip Renovate for internal GHA workflows (float on @v1)",
+      "matchDatasources": ["github-actions"],
+      "matchPackageNames": ["/^batinicaz\\/gha/"],
+      "enabled": false
+    },
+    {
       "matchUpdateTypes": ["major"],
       "automerge": false
     },
