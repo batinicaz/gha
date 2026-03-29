@@ -27,6 +27,11 @@ on:
         default: terraform
         required: false
         type: string
+      extra_env:
+        description: Newline-separated KEY=VALUE pairs added to the terraform apply environment
+        default: ""
+        required: false
+        type: string
     secrets:
       INFISICAL_IDENTITY_ID:
         description: Infisical machine identity ID for OIDC auth
@@ -73,6 +78,12 @@ jobs:
       - name: Terraform Init
         working-directory: ${{ inputs.working_directory }}
         run: terraform init
+
+      - name: Export extra environment variables
+        if: inputs.extra_env != ''
+        run: echo "$EXTRA_ENV" >> "$GITHUB_ENV"
+        env:
+          EXTRA_ENV: ${{ inputs.extra_env }}
 
       - name: Terraform Apply
         working-directory: ${{ inputs.working_directory }}
