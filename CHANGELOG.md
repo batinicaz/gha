@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/batinicaz/gha/compare/v1.11.2...v1.12.0) (2026-03-29)
+
+
+### Features
+
+* **renovate:** do not open prs until ready to merge + skip wait for internal images ([e01957c](https://github.com/batinicaz/gha/commit/e01957c262545b5ee9d6216795d2d2cce171f7dc))
+
 ### [1.11.2](https://github.com/batinicaz/gha/compare/v1.11.1...v1.11.2) (2026-03-29)
 
 
