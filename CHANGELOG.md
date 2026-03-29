@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/batinicaz/gha/compare/v1.12.0...v1.13.0) (2026-03-29)
+
+
+### Features
+
+* move pre-commit to run direct on runner + improve caching ([2e1d1c0](https://github.com/batinicaz/gha/commit/2e1d1c09c5ef11b4f20a1a7f746396b5045f01b1))
+
 ## [1.12.0](https://github.com/batinicaz/gha/compare/v1.11.2...v1.12.0) (2026-03-29)
 
 
