@@ -44,7 +44,8 @@
       "description": "Skip release age check for our own images",
       "matchDatasources": ["docker"],
       "matchPackageNames": ["/^ghcr\\.io\\/batinicaz\\//"],
-      "minimumReleaseAge": "0 days"
+      "minimumReleaseAge": "0 days",
+      "internalChecksFilter": "none"
     }
   ]
 }
