@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/batinicaz/gha/compare/v1.9.4...v1.10.0) (2026-03-29)
+
+
+### Features
+
+* add support for extra env variables in terraform workflows ([3ef35fd](https://github.com/batinicaz/gha/commit/3ef35fdbc6d646c6120af90e67384ecd75810545))
+
 ### [1.9.4](https://github.com/batinicaz/gha/compare/v1.9.3...v1.9.4) (2026-03-24)
 
 ### [1.9.3](https://github.com/batinicaz/gha/compare/v1.9.2...v1.9.3) (2026-03-24)
