@@ -59,9 +59,3 @@ jobs:
         run: |-
           git tag -f latest
           git push -f origin latest
-
-      - name: Update major version tag
-        run: |
-          MAJOR=$(git describe --tags --abbrev=0 | grep -oE '^v[0-9]+')
-          git tag -f "$MAJOR"
-          git push -f origin "$MAJOR"
