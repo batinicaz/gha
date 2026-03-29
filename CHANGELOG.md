@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.1](https://github.com/batinicaz/gha/compare/v1.13.0...v1.13.1) (2026-03-29)
+
+
+### Bug Fixes
+
+* renovate delaying for internal images ([10aef06](https://github.com/batinicaz/gha/commit/10aef06f13b086b75c739ca6654b86b2bfbd3516))
+
 ## [1.13.0](https://github.com/batinicaz/gha/compare/v1.12.0...v1.13.0) (2026-03-29)
 
 
