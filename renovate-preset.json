@@ -33,7 +33,6 @@
     },
     {
       "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": ">=1.0.0",
       "automerge": true,
       "automergeType": "pr",
       "platformAutomerge": true
@@ -41,10 +40,15 @@
     {
       "description": "Stabilisation window for external dependencies",
       "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": ">=1.0.0",
       "matchPackageNames": ["!/^ghcr\\.io\\/batinicaz\\//"],
       "minimumReleaseAge": "3 days",
       "internalChecksFilter": "strict"
+    },
+    {
+      "description": "Disable automerge for pre-1.0 (docker versioning lacks range support, so regex supplements the <1.0.0 rule above)",
+      "matchDatasources": ["docker"],
+      "matchCurrentVersion": "/^0\\./",
+      "automerge": false
     }
   ]
 }
