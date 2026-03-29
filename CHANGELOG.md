@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/batinicaz/gha/compare/v1.10.4...v1.11.0) (2026-03-29)
+
+
+### Features
+
+* add shared renovate preset with automerge rules ([87a845d](https://github.com/batinicaz/gha/commit/87a845dabed3717a948a5df8191b6d874bdfba67))
+
 ### [1.10.4](https://github.com/batinicaz/gha/compare/v1.10.3...v1.10.4) (2026-03-29)
 
 
