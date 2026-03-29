@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.4](https://github.com/batinicaz/gha/compare/v1.10.3...v1.10.4) (2026-03-29)
+
+
+### Bug Fixes
+
+* only include v1 tag on this repo ([f2f6cd0](https://github.com/batinicaz/gha/commit/f2f6cd0bc2da742ab87dae571b7a536b3e9eab93))
+
 ### [1.10.3](https://github.com/batinicaz/gha/compare/v1.10.2...v1.10.3) (2026-03-29)
 
 ### [1.10.2](https://github.com/batinicaz/gha/compare/v1.10.1...v1.10.2) (2026-03-29)
