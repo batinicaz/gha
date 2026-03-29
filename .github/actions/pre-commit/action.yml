@@ -1,36 +1,60 @@
 name: pre-commit
-description: Wrapper for running pre-commit image that runs as a non root user
+description: Run pre-commit hooks with native tool installation and caching
 author: batinicaz
 
 inputs:
-  image:
-    description: The pre-commit image to use
-    default: ghcr.io/batinicaz/pre-commit:latest
-    required: false
   path:
     description: The path to the configuration to run pre-commit against
     default: ${{ github.workspace }}
+    required: false
+  python-version:
+    description: Python version for pre-commit
+    default: "3.x"
+    required: false
+  terraform-version:
+    description: Terraform version (used by terraform-fmt and terraform-validate hooks)
+    default: "latest"
+    required: false
+  tflint-version:
+    description: TFLint version (used by tflint hook)
+    default: "latest"
     required: false
 
 runs:
   using: composite
   steps:
+    - name: Setup Python
+      uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@5e8dbf3c6d9deaf4193ca7a8fb23f2ac83bb6c85 # v4
+      with:
+        terraform_version: ${{ inputs.terraform-version }}
+        terraform_wrapper: false
+
+    - name: Setup TFLint
+      uses: terraform-linters/setup-tflint@b480b8fcdaa6f2c577f8e4fa799e89e756bb7c93 # v6
+      with:
+        tflint_version: ${{ inputs.tflint-version }}
+
     - name: Cache pre-commit environments
       uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
       with:
-        path: ${{ runner.temp }}/pre-commit-cache
+        path: |
+          ~/.cache/pre-commit
+          ~/.cache/pip
         key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
         restore-keys: |
           pre-commit-
 
+    - name: Install pre-commit
+      run: pip install pre-commit
+      shell: bash
+
     - name: Run pre-commit
       run: |
-        mkdir -p "${{ runner.temp }}/pre-commit-cache"
-        sudo chown -R 65532 "${{ inputs.path }}" "${{ runner.temp }}/pre-commit-cache"
-        docker run --rm -w /test \
-          -v "${{ inputs.path }}":/test \
-          -v "${{ runner.temp }}/pre-commit-cache":/pre-commit-cache \
-          -e PRE_COMMIT_HOME=/pre-commit-cache \
-          ${{ inputs.image }}
-        sudo chown -R $(id -u):$(id -g) "${{ inputs.path }}" "${{ runner.temp }}/pre-commit-cache"
+        cd "${{ inputs.path }}"
+        pre-commit run --all-files
       shell: bash

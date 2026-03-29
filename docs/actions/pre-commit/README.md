@@ -2,29 +2,29 @@
 
 Action File: [action.yml](../../../.github/actions/pre-commit/action.yml)
 
-Simple wrapper action to make use of [batinicaz/pre-commit](https://github.com/batinicaz/pre-commit/) image built on
-top of chainguards images that do not run as root.
+Installs pre-commit and required tooling (Terraform, TFLint) natively on the runner,
+caches hook environments between runs, and executes `pre-commit run --all-files`.
 
-Hook environments are automatically cached between runs using `actions/cache`, keyed on `.pre-commit-config.yaml`.
-This avoids re-downloading and re-installing hooks on every run.
+Hook environments are cached in `~/.cache/pre-commit` using `actions/cache`, keyed on `.pre-commit-config.yaml`.
+On cache hit, hook setup is skipped entirely. PR branches inherit the cache from the base branch.
 
 ## Usage
-
-You can call the action from the workflow in your repo like so:
 
 ```yaml
   pre-commit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
 
       - name: Run pre-commit
-        uses: batinicaz/gha/.github/actions/pre-commit@latest
+        uses: batinicaz/gha/.github/actions/pre-commit@v1
 ```
 
 ### Configuration Reference
 
-| Configuration Type | Name  | Description                                             | Default Value                       | Required |
-|--------------------|:------|---------------------------------------------------------|-------------------------------------|:---------|
-| input              | image | The docker image to run                                 | ghcr.io/batinicaz/pre-commit:latest | No       |
-| input              | path  | The path to the configuration to run pre-commit against | ${{ github.workspace }}             | No       |
+| Name              | Description                                                      | Default                   | Required |
+|:------------------|:-----------------------------------------------------------------|:--------------------------|:---------|
+| path              | The path to the configuration to run pre-commit against          | `${{ github.workspace }}` | No       |
+| python-version    | Python version for pre-commit                                    | `3.x`                     | No       |
+| terraform-version | Terraform version for terraform-fmt and terraform-validate hooks | `latest`                  | No       |
+| tflint-version    | TFLint version for tflint hook                                   | `latest`                  | No       |
