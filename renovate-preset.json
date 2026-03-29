@@ -37,7 +37,14 @@
       "automerge": true,
       "automergeType": "pr",
       "platformAutomerge": true,
-      "minimumReleaseAge": "3 days"
+      "minimumReleaseAge": "3 days",
+      "internalChecksFilter": "strict"
+    },
+    {
+      "description": "Skip release age check for our own images",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["/^ghcr\\.io\\/batinicaz\\//"],
+      "minimumReleaseAge": "0 days"
     }
   ]
 }
