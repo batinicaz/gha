@@ -36,16 +36,15 @@
       "matchCurrentVersion": ">=1.0.0",
       "automerge": true,
       "automergeType": "pr",
-      "platformAutomerge": true,
-      "minimumReleaseAge": "3 days",
-      "internalChecksFilter": "strict"
+      "platformAutomerge": true
     },
     {
-      "description": "Skip release age check for our own images",
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["/^ghcr\\.io\\/batinicaz\\//"],
-      "minimumReleaseAge": "0 days",
-      "internalChecksFilter": "none"
+      "description": "Stabilisation window for external dependencies",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": ">=1.0.0",
+      "matchPackageNames": ["!/^ghcr\\.io\\/batinicaz\\//"],
+      "minimumReleaseAge": "3 days",
+      "internalChecksFilter": "strict"
     }
   ]
 }
