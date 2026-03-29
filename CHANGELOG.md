@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.3](https://github.com/batinicaz/gha/compare/v1.13.2...v1.13.3) (2026-03-29)
+
+
+### Bug Fixes
+
+* renovate automerge for docker deps (versioning lacks range support) ([993ef0a](https://github.com/batinicaz/gha/commit/993ef0a3f9228fe3b8e990dbd8700fc865baeb28))
+
 ### [1.13.2](https://github.com/batinicaz/gha/compare/v1.13.1...v1.13.2) (2026-03-29)
 
 
