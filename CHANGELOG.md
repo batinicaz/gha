@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.10.2](https://github.com/batinicaz/gha/compare/v1.10.1...v1.10.2) (2026-03-29)
+
+
+### Bug Fixes
+
+* codeql action causing renovate lookup failures ([e38cbc6](https://github.com/batinicaz/gha/commit/e38cbc654a49ceeacd79cd16fbae1d4285e5610a))
+
 ### [1.10.1](https://github.com/batinicaz/gha/compare/v1.10.0...v1.10.1) (2026-03-29)
 
 ## [1.10.0](https://github.com/batinicaz/gha/compare/v1.9.4...v1.10.0) (2026-03-29)
