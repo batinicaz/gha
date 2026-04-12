@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/batinicaz/gha/compare/v1.14.0...v1.15.0) (2026-04-12)
+
+
+### Features
+
+* create shared tf docs update workflow ([c570d81](https://github.com/batinicaz/gha/commit/c570d810e47511434114198560395ef334645258))
+
 ## [1.14.0](https://github.com/batinicaz/gha/compare/v1.13.8...v1.14.0) (2026-04-12)
 
 
