@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.13.8](https://github.com/batinicaz/gha/compare/v1.13.7...v1.13.8) (2026-04-12)
+
+
+### Bug Fixes
+
+* major tag update not working if workflow files have been modified ([e145dee](https://github.com/batinicaz/gha/commit/e145dee1756fe10cbe4ef76db2ad1f7532a30114))
+
 ### [1.13.7](https://github.com/batinicaz/gha/compare/v1.13.6...v1.13.7) (2026-04-12)
 
 ### [1.13.6](https://github.com/batinicaz/gha/compare/v1.13.5...v1.13.6) (2026-04-10)
