@@ -44,14 +44,9 @@ runs:
         tflint_version: ${{ inputs.tflint-version }}
 
     - name: Setup terraform-docs
-      shell: bash
-      env:
-        VERSION: ${{ inputs.terraform-docs-version }}
-      run: |
-        curl -sSfL "https://github.com/terraform-docs/terraform-docs/releases/download/${VERSION}/terraform-docs-${VERSION}-linux-amd64.tar.gz" \
-          | tar -xz -C /usr/local/bin terraform-docs
-        chmod +x /usr/local/bin/terraform-docs
-        terraform-docs version
+      uses: batinicaz/gha/.github/actions/setup-terraform-docs@v1
+      with:
+        version: ${{ inputs.terraform-docs-version }}
 
     - name: Cache pre-commit environments
       uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
