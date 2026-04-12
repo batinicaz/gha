@@ -19,6 +19,10 @@ inputs:
     description: TFLint version (used by tflint hook)
     default: "latest"
     required: false
+  terraform-docs-version:
+    description: terraform-docs version (used by terraform-docs-system hook)
+    default: "v0.22.0"
+    required: false
 
 runs:
   using: composite
@@ -38,6 +42,16 @@ runs:
       uses: terraform-linters/setup-tflint@b480b8fcdaa6f2c577f8e4fa799e89e756bb7c93 # v6
       with:
         tflint_version: ${{ inputs.tflint-version }}
+
+    - name: Setup terraform-docs
+      shell: bash
+      env:
+        VERSION: ${{ inputs.terraform-docs-version }}
+      run: |
+        curl -sSfL "https://github.com/terraform-docs/terraform-docs/releases/download/${VERSION}/terraform-docs-${VERSION}-linux-amd64.tar.gz" \
+          | tar -xz -C /usr/local/bin terraform-docs
+        chmod +x /usr/local/bin/terraform-docs
+        terraform-docs version
 
     - name: Cache pre-commit environments
       uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5
