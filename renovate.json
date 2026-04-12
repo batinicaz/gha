@@ -4,9 +4,12 @@
   "customManagers": [
     {
       "customType": "regex",
-      "description": "Update terraform-docs version in pre-commit action",
-      "fileMatch": ["^\\.github/actions/pre-commit/action\\.yml$"],
-      "matchStrings": ["terraform-docs-version[\\s\\S]*?default:\\s*\"(?<currentValue>v[\\d.]+)\""],
+      "description": "Update terraform-docs version in shared actions and workflows",
+      "fileMatch": [
+        "^\\.github/actions/.*action\\.yml$",
+        "^\\.github/workflows/terraform-docs\\.yml$"
+      ],
+      "matchStrings": ["terraform.docs.version[\\s\\S]*?default:\\s*\"(?<currentValue>v[\\d.]+)\""],
       "depNameTemplate": "terraform-docs/terraform-docs",
       "datasourceTemplate": "github-releases"
     }

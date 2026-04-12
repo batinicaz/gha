@@ -1,0 +1,109 @@
+name: Update Terraform Docs
+on:
+  workflow_call:
+    inputs:
+      working_directory:
+        description: Directory containing Terraform configuration
+        default: "."
+        required: false
+        type: string
+      output_file:
+        description: Output file path for terraform-docs
+        default: "README.md"
+        required: false
+        type: string
+      recursive:
+        description: Recursively process submodules
+        default: false
+        required: false
+        type: boolean
+      update_lock_file:
+        description: Run terraform providers lock before generating docs
+        default: false
+        required: false
+        type: boolean
+      terraform_docs_version:
+        description: terraform-docs version to install
+        default: "v0.22.0"
+        required: false
+        type: string
+      git_commit_message:
+        description: Commit message for docs update
+        default: "docs: update terraform docs following renovate patch"
+        required: false
+        type: string
+    secrets:
+      DOCUMENTATION_APP_ID:
+        description: GitHub App ID for pushing docs commits
+        required: true
+      DOCUMENTATION_PRIVATE_KEY:
+        description: GitHub App private key for pushing docs commits
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  terraform-docs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@fe104658747b27e96e4f7e80cd0a94068e53901d # v2.16.1
+        with:
+          egress-policy: audit
+
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@1b10c78c7865c340bc4f6099eb2f838309f1e8c3 # v3
+        with:
+          app-id: ${{ secrets.DOCUMENTATION_APP_ID }}
+          private-key: ${{ secrets.DOCUMENTATION_PRIVATE_KEY }}
+
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: Setup Terraform
+        if: inputs.update_lock_file
+        uses: hashicorp/setup-terraform@5e8dbf3c6d9deaf4193ca7a8fb23f2ac83bb6c85 # v4
+
+      - name: Update lock file
+        if: inputs.update_lock_file
+        working-directory: ${{ inputs.working_directory }}
+        run: |
+          terraform providers lock -platform=linux_amd64 -platform=darwin_arm64
+          git add .terraform.lock.hcl
+
+      - name: Setup terraform-docs
+        uses: batinicaz/gha/.github/actions/setup-terraform-docs@v1
+        with:
+          version: ${{ inputs.terraform_docs_version }}
+
+      - name: Run terraform-docs
+        env:
+          OUTPUT_FILE: ${{ inputs.output_file }}
+          WORKING_DIR: ${{ inputs.working_directory }}
+          RECURSIVE: ${{ inputs.recursive }}
+        run: |
+          args=(markdown table --output-file "$OUTPUT_FILE" --output-mode inject)
+          if [[ "$RECURSIVE" == "true" ]]; then
+            args+=(--recursive)
+          fi
+          terraform-docs "${args[@]}" "$WORKING_DIR"
+
+      - name: Commit and push
+        env:
+          COMMIT_MESSAGE: ${{ inputs.git_commit_message }}
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "$COMMIT_MESSAGE"
+            git push
+          fi

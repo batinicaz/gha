@@ -1,0 +1,21 @@
+name: Setup terraform-docs
+description: Install terraform-docs binary from GitHub releases
+
+inputs:
+  version:
+    description: terraform-docs version to install
+    default: "v0.22.0"
+    required: false
+
+runs:
+  using: composite
+  steps:
+    - name: Install terraform-docs
+      shell: bash
+      env:
+        VERSION: ${{ inputs.version }}
+      run: |
+        curl -sSfL "https://github.com/terraform-docs/terraform-docs/releases/download/${VERSION}/terraform-docs-${VERSION}-linux-amd64.tar.gz" \
+          | tar -xz -C /usr/local/bin terraform-docs
+        chmod +x /usr/local/bin/terraform-docs
+        terraform-docs version
