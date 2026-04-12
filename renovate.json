@@ -1,4 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["github>batinicaz/gha:renovate-preset"]
+  "extends": ["github>batinicaz/gha:renovate-preset"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update terraform-docs version in pre-commit action",
+      "fileMatch": ["^\\.github/actions/pre-commit/action\\.yml$"],
+      "matchStrings": ["terraform-docs-version[\\s\\S]*?default:\\s*\"(?<currentValue>v[\\d.]+)\""],
+      "depNameTemplate": "terraform-docs/terraform-docs",
+      "datasourceTemplate": "github-releases"
+    }
+  ]
 }
