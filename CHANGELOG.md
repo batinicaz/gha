@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.14.0](https://github.com/batinicaz/gha/compare/v1.13.8...v1.14.0) (2026-04-12)
+
+
+### Features
+
+* use terraform docks from downloaded binary ([24c520a](https://github.com/batinicaz/gha/commit/24c520a8cd9e04fec1e02f87d8ee600ae7aa6427))
+
 ### [1.13.8](https://github.com/batinicaz/gha/compare/v1.13.7...v1.13.8) (2026-04-12)
 
 
