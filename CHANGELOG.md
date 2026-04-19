@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.3](https://github.com/batinicaz/gha/compare/v1.15.2...v1.15.3) (2026-04-19)
+
+
+### Bug Fixes
+
+* align to renovate docs best practice config ([#95](https://github.com/batinicaz/gha/issues/95)) ([fd1df3a](https://github.com/batinicaz/gha/commit/fd1df3af23cd72969c1a49f0ab807758fa6c4ffb))
+
 ### [1.15.2](https://github.com/batinicaz/gha/compare/v1.15.1...v1.15.2) (2026-04-13)
 
 ### [1.15.1](https://github.com/batinicaz/gha/compare/v1.15.0...v1.15.1) (2026-04-13)
