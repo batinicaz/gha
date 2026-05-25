@@ -4,7 +4,7 @@ description: Install terraform-docs binary from GitHub releases
 inputs:
   version:
     description: terraform-docs version to install
-    default: "v0.23.0"
+    default: "v0.24.0"
     required: false
 
 runs:
