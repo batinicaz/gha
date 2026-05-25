@@ -21,7 +21,7 @@ inputs:
     required: false
   terraform-docs-version:
     description: terraform-docs version (used by terraform-docs-system hook)
-    default: "v0.23.0"
+    default: "v0.24.0"
     required: false
 
 runs:
