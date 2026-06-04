@@ -4,6 +4,7 @@
   "osvVulnerabilityAlerts": true,
   "dependencyDashboardOsvVulnerabilitySummary": "all",
   "pre-commit": { "enabled": true },
+  "minimumReleaseAgeBehaviour": "timestamp-optional",
   "packageRules": [
     {
       "description": "Skip Renovate for internal GHA workflows (float on @v1)",
