@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.10](https://github.com/batinicaz/gha/compare/v1.15.9...v1.15.10) (2026-06-04)
+
+
+### Bug Fixes
+
+* non dockerhub images not updated ([#114](https://github.com/batinicaz/gha/issues/114)) ([c78a04b](https://github.com/batinicaz/gha/commit/c78a04bf04e265817f2d2b5a76774b06908cd0ae))
+
 ### [1.15.9](https://github.com/batinicaz/gha/compare/v1.15.8...v1.15.9) (2026-06-03)
 
 ### [1.15.8](https://github.com/batinicaz/gha/compare/v1.15.7...v1.15.8) (2026-05-23)
