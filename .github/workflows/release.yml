@@ -27,10 +27,28 @@ permissions:
   contents: write
 
 jobs:
+  identify-bot:
+    name: Identify release bot
+    runs-on: ubuntu-latest
+    outputs:
+      appSlug: ${{ steps.generate-token.outputs.app-slug }}
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
+        with:
+          egress-policy: audit
+
+      - uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3
+        id: generate-token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
   release:
     name: Release
     runs-on: ubuntu-latest
-    if: "!endsWith(github.actor, '[bot]')"
+    needs: identify-bot
+    if: ${{ github.actor != format('{0}[bot]', needs.identify-bot.outputs.appSlug) }}
     steps:
       - name: Harden the runner (Audit all outbound calls)
         uses: step-security/harden-runner@9af89fc71515a100421586dfdb3dc9c984fbf411 # v2.19.4
