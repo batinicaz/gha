@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.12](https://github.com/batinicaz/gha/compare/v1.15.11...v1.15.12) (2026-06-21)
+
+
+### Bug Fixes
+
+* releases being skipped when renovate is the author ([#119](https://github.com/batinicaz/gha/issues/119)) ([a3432f9](https://github.com/batinicaz/gha/commit/a3432f9801dfd02daa6f290f6dea8a94a46f6a52))
+
 ### [1.15.11](https://github.com/batinicaz/gha/compare/v1.15.10...v1.15.11) (2026-06-18)
 
 ### [1.15.10](https://github.com/batinicaz/gha/compare/v1.15.9...v1.15.10) (2026-06-04)
