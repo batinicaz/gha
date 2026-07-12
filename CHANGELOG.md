@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.21](https://github.com/batinicaz/gha/compare/v1.15.20...v1.15.21) (2026-07-12)
+
+
+### Bug Fixes
+
+* renovate config missing base config rules, not preventing auto merge of pre 1.0 deps + naming of dependencyDashboardOSVVulnerabilitySummary parameter ([#129](https://github.com/batinicaz/gha/issues/129)) ([836e78d](https://github.com/batinicaz/gha/commit/836e78da181c617999d83875e58f6fe7ca008f53))
+
 ### [1.15.20](https://github.com/batinicaz/gha/compare/v1.15.19...v1.15.20) (2026-07-03)
 
 ### [1.15.19](https://github.com/batinicaz/gha/compare/v1.15.18...v1.15.19) (2026-07-02)
