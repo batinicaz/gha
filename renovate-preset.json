@@ -9,7 +9,7 @@
   "packageRules": [
     {
       "description": "Skip Renovate for internal GHA workflows (float on @v1)",
-      "matchDatasources": ["github-actions"],
+      "matchManagers": ["github-actions"],
       "matchPackageNames": ["/^batinicaz\\/gha/"],
       "pinDigests": false,
       "enabled": false
