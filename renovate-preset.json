@@ -1,8 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": ["Default Renovate preset for batinicaz GitHub repos"],
+  "extends": ["config:best-practices"],
   "osvVulnerabilityAlerts": true,
-  "dependencyDashboardOsvVulnerabilitySummary": "all",
+  "dependencyDashboardOSVVulnerabilitySummary": "all",
   "pre-commit": { "enabled": true },
   "minimumReleaseAgeBehaviour": "timestamp-optional",
   "packageRules": [
@@ -14,10 +15,6 @@
     },
     {
       "matchUpdateTypes": ["major"],
-      "automerge": false
-    },
-    {
-      "matchCurrentVersion": "<1.0.0",
       "automerge": false
     },
     {
@@ -46,6 +43,11 @@
       "matchPackageNames": ["!/^ghcr\\.io\\/batinicaz\\//"],
       "minimumReleaseAge": "14 days",
       "internalChecksFilter": "strict"
+    },
+    {
+      "description": "Disable automerge for pre-1.0 dependencies",
+      "matchCurrentVersion": "<1.0.0",
+      "automerge": false
     },
     {
       "description": "Disable automerge for pre-1.0 (docker versioning lacks range support, so regex supplements the <1.0.0 rule above)",
