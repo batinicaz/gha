@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.24](https://github.com/batinicaz/gha/compare/v1.15.23...v1.15.24) (2026-07-12)
+
+
+### Bug Fixes
+
+* gha match to not pin digests ([#133](https://github.com/batinicaz/gha/issues/133)) ([11595bf](https://github.com/batinicaz/gha/commit/11595bf8a32bab664e82ba4d9c06fd50d8550118))
+
 ### [1.15.23](https://github.com/batinicaz/gha/compare/v1.15.22...v1.15.23) (2026-07-12)
 
 ### [1.15.22](https://github.com/batinicaz/gha/compare/v1.15.21...v1.15.22) (2026-07-12)
