@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.15.48](https://github.com/batinicaz/gha/compare/v1.15.47...v1.15.48) (2026-09-15)
+
 ### [1.15.47](https://github.com/batinicaz/gha/compare/v1.15.46...v1.15.47) (2026-09-14)
 
 ### [1.15.46](https://github.com/batinicaz/gha/compare/v1.15.45...v1.15.46) (2026-09-11)
