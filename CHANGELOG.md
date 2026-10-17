@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.16.0](https://github.com/batinicaz/gha/compare/v1.15.55...v1.16.0) (2026-10-17)
+
+
+### Features
+
+* add cross-platform builds and image retention to docker workflow ([#168](https://github.com/batinicaz/gha/issues/168)) ([6b32bb9](https://github.com/batinicaz/gha/commit/6b32bb96e1bce71a14dc7c84039c57f364b2a009))
+
 ### [1.15.55](https://github.com/batinicaz/gha/compare/v1.15.54...v1.15.55) (2026-10-15)
 
 ### [1.15.54](https://github.com/batinicaz/gha/compare/v1.15.53...v1.15.54) (2026-10-08)
