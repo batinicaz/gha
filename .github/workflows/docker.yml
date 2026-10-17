@@ -31,6 +31,16 @@ on:
         type: string
         default: ""
         required: false
+      platforms:
+        description: "Target platform passed to docker build, e.g. linux/arm64. Empty builds for the runner's native platform."
+        type: string
+        default: ""
+        required: false
+      keep_tagged:
+        description: "Number of most recent tagged image versions to keep after a push; older versions and untagged manifests are deleted. The calling repo needs the Admin role on the package. 0 disables pruning."
+        type: number
+        default: 3
+        required: false
     secrets:
       GHCR_TOKEN:
         description: "The token to authenticate against GHCR"
@@ -53,6 +63,10 @@ jobs:
 
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      - name: Set up QEMU
+        if: inputs.platforms != ''
+        uses: docker/setup-qemu-action@99012661954931238ded8c8b007157a8430204e1 # v4.4.0
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
@@ -85,6 +99,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: ${{ inputs.build_args }}
+          platforms: ${{ inputs.platforms }}
           secrets: |
             github_token=${{ secrets.GHCR_TOKEN }}
           no-cache-filters: ${{ inputs.no_cache_filter }}
@@ -145,3 +160,13 @@ jobs:
           for tag in $(echo "${{ steps.meta.outputs.tags }}" | tr '\n' ' '); do
             docker push "$tag"
           done
+
+      - name: Prune old image versions
+        if: inputs.push && inputs.keep_tagged > 0 && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
+        uses: dataaxiom/ghcr-cleanup-action@d52806a0dc70b430571a37da1fde39733ffd640f # v1.2.2
+        with:
+          token: ${{ secrets.GHCR_TOKEN }}
+          keep-n-tagged: ${{ inputs.keep_tagged }}
+          exclude-tags: buildcache
+          delete-untagged: true
+          validate: true
