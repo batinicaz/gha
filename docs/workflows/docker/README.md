@@ -13,6 +13,7 @@ Workflow designed to build and publish a daily docker image with optimised cache
 ## Requirements
 
 - Single Dockerfile at the root of the repo
+- The calling repo has the Admin role on its GHCR package (Manage Actions access) for pruning
 
 ## Usage
 
@@ -41,3 +42,5 @@ jobs:
 | Configuration Type | Name             | Description                                                                                                                       | Default Value                   | Required |
 |--------------------|------------------|-----------------------------------------------------------------------------------------------------------------------------------|---------------------------------|----------|
 | secret              | GHCR_TOKEN   | The token with permission to access the GHCR for the repo                                                                 |  | Yes       |
+| input              | platforms   | Target platform passed to docker build, e.g. linux/arm64. Empty builds for the runner's native platform.                  | `""` | No       |
+| input              | keep_tagged   | Number of most recent tagged image versions to keep after a push; older versions and untagged manifests are deleted. The calling repo needs the Admin role on the package. 0 disables pruning. | `3` | No       |
