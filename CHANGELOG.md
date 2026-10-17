@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.1](https://github.com/batinicaz/gha/compare/v1.16.0...v1.16.1) (2026-10-17)
+
+
+### Bug Fixes
+
+* deprecated inputs ([#169](https://github.com/batinicaz/gha/issues/169)) ([069d782](https://github.com/batinicaz/gha/commit/069d7826a5c9ae848b98e30d19be03683febcb7c))
+* spacing on workflow inputs ([#170](https://github.com/batinicaz/gha/issues/170)) ([5670194](https://github.com/batinicaz/gha/commit/5670194b52f1a11b7a3a81b6798767bcd2e9ace8))
+
 ## [1.16.0](https://github.com/batinicaz/gha/compare/v1.15.55...v1.16.0) (2026-10-17)
 
 
