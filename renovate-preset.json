@@ -7,7 +7,18 @@
   "pre-commit": { "enabled": true },
   "minimumReleaseAgeBehaviour": "timestamp-optional",
   "prHourlyLimit": 0,
+  "terraform": {
+    "lockFileMaintenance": { "enabled": false }
+  },
   "packageRules": [
+    {
+      "description": "Update Terraform providers individually with version changes and release notes",
+      "matchManagers": ["terraform"],
+      "matchDatasources": ["terraform-provider"],
+      "rangeStrategy": "update-lockfile",
+      "fetchChangeLogs": "pr",
+      "groupName": null
+    },
     {
       "description": "Skip Renovate for internal GHA workflows (float on @v1)",
       "matchManagers": ["github-actions"],
