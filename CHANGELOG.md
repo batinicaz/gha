@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.11](https://github.com/batinicaz/gha/compare/v1.16.10...v1.16.11) (2026-11-03)
+
+
+### Bug Fixes
+
+* renovate config hiding tf version bumps from PR title ([#180](https://github.com/batinicaz/gha/issues/180)) ([81c13be](https://github.com/batinicaz/gha/commit/81c13be847f032cd55577d043d70caacbf08537d))
+
 ### [1.16.10](https://github.com/batinicaz/gha/compare/v1.16.9...v1.16.10) (2026-11-02)
 
 ### [1.16.9](https://github.com/batinicaz/gha/compare/v1.16.8...v1.16.9) (2026-10-29)
