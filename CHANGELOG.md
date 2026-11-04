@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.12](https://github.com/batinicaz/gha/compare/v1.16.11...v1.16.12) (2026-11-04)
+
+
+### Bug Fixes
+
+* missing changelogs from renovate prs ([#181](https://github.com/batinicaz/gha/issues/181)) ([03ec470](https://github.com/batinicaz/gha/commit/03ec470090311b26ffcccc52fdc63021630cc36c))
+
 ### [1.16.11](https://github.com/batinicaz/gha/compare/v1.16.10...v1.16.11) (2026-11-03)
 
 
