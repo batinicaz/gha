@@ -12,6 +12,36 @@
   },
   "packageRules": [
     {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["docker.io/infisical/cli"],
+      "sourceUrl": "https://github.com/Infisical/cli"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["docker.io/mauriceboe/trek"],
+      "sourceUrl": "https://github.com/liketrek/TREK"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["docker.io/traefik"],
+      "sourceUrl": "https://github.com/traefik/traefik"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["ghcr.io/thespad/get_iplayer"],
+      "sourceUrl": "https://github.com/get-iplayer/get_iplayer"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["public.ecr.aws/docker/library/postgres"],
+      "changelogUrl": "https://www.postgresql.org/docs/release/"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["docker.io/library/php"],
+      "changelogUrl": "https://www.php.net/ChangeLog-8.php"
+    },
+    {
       "description": "Update Terraform providers individually with version changes and release notes",
       "matchManagers": ["terraform"],
       "matchDatasources": ["terraform-provider"],
