@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.16.19](https://github.com/batinicaz/gha/compare/v1.16.18...v1.16.19) (2026-11-20)
+
+
+### Bug Fixes
+
+* push release branch and tag atomically ([#188](https://github.com/batinicaz/gha/issues/188)) ([f7e4f41](https://github.com/batinicaz/gha/commit/f7e4f41da04b3fe8b32fbe3fb2e0066dab9f6cc5))
+
 ### [1.16.18](https://github.com/batinicaz/gha/compare/v1.16.17...v1.16.18) (2026-11-18)
 
 ### [1.16.17](https://github.com/batinicaz/gha/compare/v1.16.16...v1.16.17) (2026-11-18)
